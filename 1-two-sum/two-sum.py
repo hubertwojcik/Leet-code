@@ -1,11 +1,17 @@
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:        
-        hash_map={}
-        for idx,num in enumerate(nums):
-            difference = target - num
-            if difference in hash_map:
-                return [hash_map[difference],idx]
-            hash_map[num]=idx
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        lookup = {}
+        for index,num in enumerate(nums):
+            complement = target - num
 
+            if complement in lookup:
+                return [lookup[complement], index]
             
-        
+            lookup[num] = index
+
+        return None
