@@ -5,14 +5,16 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         
-        hash_table = {}
-
+        hash_map = {}
 
         for string in strs:
-            cardinal = ('.').join(sorted(string))
-            if cardinal in hash_table:
-                hash_table[cardinal].append(string)
-            else:
-                hash_table[cardinal] = [string]
-        return list(hash_table.values())
+            letters = [0] * 26
+            for char in string:
+                char_value = ord(char) - ord('a')
+                letters[char_value] += 1
+            key = tuple(letters)
+            if key not in hash_map:
+                hash_map[key] = []
+            hash_map[key].append(string)
+        return list(hash_map.values())
             
