@@ -1,12 +1,21 @@
 function containsDuplicate(nums: number[]): boolean {
-    let counter = {}
+    let numsSet = new Set<number>()
 
-    for (let num of nums){    
-        if(counter[num] == 1){
+    for (let num of nums){
+        if(numsSet.has(num)){
             return true
         }
-        counter[num] = 1
+        numsSet.add(num)
     }
-    
     return false
+    // let counter = {}
+
+    // for (let num of nums){    
+    //     if(counter[num] == 1){
+    //         return true
+    //     }
+    //     counter[num] = 1
+    // }
+    
+    // return false
 };
