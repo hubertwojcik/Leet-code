@@ -1,15 +1,20 @@
 function groupAnagrams(strs: string[]): string[][] {
-    const hashMap = new Map<string,string[]>();
-
+    const wordsMap = new Map<string, string[]>();
+    const result = []
+    
     for (let str of strs){
-       const sortedStr = str.split('').sort().join('');
-        
-        if (hashMap.has(sortedStr)){
-            hashMap.get(sortedStr)!.push(str);
-        } else {
-            hashMap.set(sortedStr, [str]);
+        const sortedWord = str.split('').sort().join('')
+        console.log(str)
+        if(wordsMap.has(sortedWord)){
+           wordsMap.get(sortedWord).push(str)
+        }else{
+        wordsMap.set(sortedWord,[str])
         }
     }
     
-    return Array.from(hashMap.values())
+    for (const words of wordsMap.values()){
+        result.push(words)
+    }
+
+    return result
 };
