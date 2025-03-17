@@ -1,20 +1,21 @@
 function isAnagram(s: string, t: string): boolean {
-    if (s.length !== t.length) return false
+    if (s.length != t.length) return false
 
-    const counterS = {}
-    const counterT = {}
+    const counterOne = {}
+    const counterTwo = {}
 
     for (let str of s){
-        counterS[str] = (counterS[str] || 0) + 1
+        counterOne[str] = (counterOne[str] || 0) + 1
     }
 
     for (let str of t){
-        counterT[str] = (counterT[str] || 0) + 1
+        counterTwo[str] = (counterTwo[str] || 0) + 1
     }
 
-    for (let key of Object.keys(counterS)){
-        if(!counterT[key] || counterS[key] !== counterT[key]) return false
+    for (let key in counterOne){
+        if(!counterTwo[key] || counterTwo[key] !== counterOne[key]){
+            return false
+        }
     }
     return true
-
 };
