@@ -1,24 +1,21 @@
-class Solution(object):
-    def generateParenthesis(self, n):
-        """
-        :type n: int
-        :rtype: List[str]
-        """
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
         stack = []
         result = []
 
-        def generate(opened_num, closed_num):
-            if opened_num == closed_num == n:
+        def backtrack(opened, closed):
+            if(opened == closed == n):
                 result.append("".join(stack))
-                return
-            if opened_num < n:
+                return result
+            if opened < n:
                 stack.append("(")
-                generate(opened_num + 1, closed_num)
+                backtrack(opened + 1, closed)
                 stack.pop()
-            if closed_num < opened_num:
+            if closed < opened:
                 stack.append(")")
-                generate(opened_num, closed_num + 1)
+                backtrack(opened, closed + 1)
                 stack.pop()
 
-        generate(0,0)
+
+        backtrack(0,0)
         return result
