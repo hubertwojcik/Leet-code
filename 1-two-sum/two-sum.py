@@ -1,17 +1,9 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        lookup = {}
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hash = {} # val -> index
+
         for index,num in enumerate(nums):
-            complement = target - num
-
-            if complement in lookup:
-                return [lookup[complement], index]
-            
-            lookup[num] = index
-
-        return None
+            if target - num in hash:
+                return [index, hash[ target - num]]
+            hash[num] = index
+        
